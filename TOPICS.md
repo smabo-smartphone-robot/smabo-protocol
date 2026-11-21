@@ -19,13 +19,14 @@
 | `/initialpose` | `geometry_msgs/msg/PoseWithCovarianceStamped` | web | - | 自己位置の初期値（smabo-brain-ros のみ） |
 | `/joint_states` | `sensor_msgs/msg/JointState` | esp32 | brain | サーボの角度 |
 | `/look_at` | `geometry_msgs/msg/PoseStamped` | web | app | 目で追う先 |
+| `/mode/command` | `std_msgs/msg/String` | web | - | ナビゲーション／動作計画モードの起動・終了の指示（JSON、smabo-brain-ros のみ） |
 | `/nav/command` | `std_msgs/msg/String` | web | - | SLAM・地図保存・ナビゲーションの指示（JSON、smabo-brain-ros のみ） |
 | `/odom` | `nav_msgs/msg/Odometry` | brain | web | 車輪の速度から積分した自己位置 |
 | `/phone/config` | `std_msgs/msg/String` | app | web | スマホの設定の全体（JSON）。変わったとき |
 | `/phone/config_url` | `std_msgs/msg/String` | app | web | スマホの設定 REST API の場所。5 秒ごと |
 | `/ping` | `std_msgs/msg/String` | web | esp32 | WebSocket の往復確認（web → ESP32） |
 | `/pong` | `std_msgs/msg/String` | esp32 | web | /ping の応答（ESP32 → web） |
-| `/scan` | `sensor_msgs/msg/LaserScan` | esp32 | - | LiDAR の距離 |
+| `/scan` | `sensor_msgs/msg/LaserScan` | esp32 | web | LiDAR の距離。brain は web にもそのまま送る（Sensors タブの点群表示用） |
 | `/servo/command` | `trajectory_msgs/msg/JointTrajectory` | web | esp32 | サーボの軌道 |
 | `/speech/audio` | `audio_common_msgs/msg/AudioData` | app | brain | 録音した音声（base64 の WAV）。brain が文字にする |
 | `/speech/recognized` | `std_msgs/msg/String` | brain | web | 音声認識の結果 |
@@ -40,4 +41,4 @@
 | `/webrtc/web_answer` | `std_msgs/msg/String` | web | brain | WebRTC のシグナリング（web → brain） |
 | `/webrtc/web_ice` | `std_msgs/msg/String` | web | brain | WebRTC のシグナリング（web → brain） |
 | `/webrtc/web_offer` | `std_msgs/msg/String` | brain | web | WebRTC のシグナリング（brain → web） |
-| `/wheel_vel` | `smabo_interfaces/msg/WheelVel` | esp32 | brain | 左右の車輪の速度。brain が /odom に積分する |
+| `/wheel_vel` | `smabo_interfaces/msg/WheelVel` | esp32 | web, brain | 左右の車輪の速度。brain が /odom に積分し、web にもそのまま送る（車輪ごとの回転の確認用） |

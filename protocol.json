@@ -18,6 +18,7 @@
     "/initialpose": "geometry_msgs/msg/PoseWithCovarianceStamped",
     "/joint_states": "sensor_msgs/msg/JointState",
     "/look_at": "geometry_msgs/msg/PoseStamped",
+    "/mode/command": "std_msgs/msg/String",
     "/nav/command": "std_msgs/msg/String",
     "/odom": "nav_msgs/msg/Odometry",
     "/phone/config": "std_msgs/msg/String",
@@ -48,6 +49,7 @@
       "/initialpose",
       "/goal_pose",
       "/nav/command",
+      "/mode/command",
       "/speech/say",
       "/expression",
       "/look_at",
@@ -81,6 +83,8 @@
   "subscribe": {
     "web": [
       "/odom",
+      "/wheel_vel",
+      "/scan",
       "/pong",
       "/speech/recognized",
       "/imu/data",
@@ -112,7 +116,8 @@
   "ros_only_topics": [
     "/goal_pose",
     "/initialpose",
-    "/nav/command"
+    "/nav/command",
+    "/mode/command"
   ],
   "app_topics": [
     "/expression",
@@ -142,13 +147,14 @@
     "/initialpose": "自己位置の初期値（smabo-brain-ros のみ）",
     "/joint_states": "サーボの角度",
     "/look_at": "目で追う先",
+    "/mode/command": "ナビゲーション／動作計画モードの起動・終了の指示（JSON、smabo-brain-ros のみ）",
     "/nav/command": "SLAM・地図保存・ナビゲーションの指示（JSON、smabo-brain-ros のみ）",
     "/odom": "車輪の速度から積分した自己位置",
     "/phone/config": "スマホの設定の全体（JSON）。変わったとき",
     "/phone/config_url": "スマホの設定 REST API の場所。5 秒ごと",
     "/ping": "WebSocket の往復確認（web → ESP32）",
     "/pong": "/ping の応答（ESP32 → web）",
-    "/scan": "LiDAR の距離",
+    "/scan": "LiDAR の距離。brain は web にもそのまま送る（Sensors タブの点群表示用）",
     "/servo/command": "サーボの軌道",
     "/speech/audio": "録音した音声（base64 の WAV）。brain が文字にする",
     "/speech/recognized": "音声認識の結果",
@@ -163,7 +169,7 @@
     "/webrtc/web_answer": "WebRTC のシグナリング（web → brain）",
     "/webrtc/web_ice": "WebRTC のシグナリング（web → brain）",
     "/webrtc/web_offer": "WebRTC のシグナリング（brain → web）",
-    "/wheel_vel": "左右の車輪の速度。brain が /odom に積分する"
+    "/wheel_vel": "左右の車輪の速度。brain が /odom に積分し、web にもそのまま送る（車輪ごとの回転の確認用）"
   },
   "to_brain": [
     "/hello",
