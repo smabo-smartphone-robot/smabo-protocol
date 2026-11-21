@@ -1,5 +1,10 @@
 # smabo-protocol
 
+> **smabo（スマボ）** は、手のひらサイズのスマホロボット（スマートフォンロボット）です。手持ちのスマホが顔とセンサーになり、工具なしでブロックのように組み立てられます。
+> このリポジトリは smabo のプロトコル定義（各リポジトリの写しを生成）です。使い方は [公式サイト](https://smabo-smartphone-robot.github.io/)、ほかのリポジトリは [smabo-smartphone-robot](https://github.com/smabo-smartphone-robot) を見てください。
+>
+> *smabo is a palm-sized smartphone robot: your phone becomes its face and sensors, and it snaps together without tools. This repository is the protocol definition that generates each repository's copy. Guides: [smabo-smartphone-robot.github.io](https://smabo-smartphone-robot.github.io/)*
+
 smabo のリポジトリどうしの決めごとの正本です。ここだけを直し、各リポジトリの写しは `gen.py` で作ります。
 
 | ファイル | 中身 |
